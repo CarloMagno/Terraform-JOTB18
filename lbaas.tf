@@ -207,17 +207,6 @@ resource "oci_core_instance" "instance2" {
   }
 }
 
-resource "oci_core_instance" "instance3" {
-  availability_domain = "${lookup(data.oci_identity_availability_domains.ADs.availability_domains[0],"name")}"
-  compartment_id      = "${var.compartment_ocid}"
-  display_name        = "database"
-  image               = "${var.InstanceImageOCID[var.region]}"
-  shape               = "VM.Standard1.2"
-  subnet_id           = "${oci_core_subnet.subnet1.id}"
-  hostname_label      = "database"
-}
-
-
 variable "user-data" {
   default = <<EOF
 #!/bin/bash -x
