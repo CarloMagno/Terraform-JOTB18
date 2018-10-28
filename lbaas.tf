@@ -36,9 +36,9 @@ variable "InstanceImageOCID" {
 default = {
         // Oracle-provided image "Oracle-Linux-7.5-2018.05.09-1"
         // See https://docs.us-phoenix-1.oraclecloud.com/Content/Resources/Assets/OracleProvidedImageOCIDs.pdf
-                    us-phoenix-1 = "ocid1.image.oc1.phx.aaaaaaaav4gjc4l232wx5g5drypbuiu375lemgdgnc7zg2wrdfmmtbtyrc5q"
-                    us-ashburn-1 = "ocid1.image.oc1.iad.aaaaaaaa6ybn2lkqp2ejhijhehf5i65spqh3igt53iyvncyjmo7uhm5235ca"
-        eu-frankfurt-1 = "ocid1.image.oc1.eu-frankfurt1.aaaaaaaajdge4yzm5j7ci7ryzte7f3qgcekljjw7p6nexhnsvwt6hoybcu3q"
+        us-phoenix-1 = "ocid1.image.oc1.phx.aaaaaaaav4gjc4l232wx5g5drypbuiu375lemgdgnc7zg2wrdfmmtbtyrc5q"
+        us-ashburn-1 = "ocid1.image.oc1.iad.aaaaaaaa6ybn2lkqp2ejhijhehf5i65spqh3igt53iyvncyjmo7uhm5235ca"
+        eu-frankfurt-1 = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaaitzn6tdyjer7jl34h2ujz74jwy5nkbukbh55ekp6oyzwrtfa4zma"
     }
 }
 
@@ -292,7 +292,7 @@ resource "oci_load_balancer_certificate" "lb-cert1" {
 resource "oci_load_balancer_listener" "lb-listener1" {
   load_balancer_id         = "${oci_load_balancer.lb1.id}"
   name                     = "http"
-  default_backend_set_name = "${oci_load_balancer_backendset.lb-bes1.id}"
+  default_backend_set_name = "${oci_load_balancer_backendset.lb-bes1.name}"
   port                     = 80
   protocol                 = "HTTP"
 }
@@ -300,7 +300,7 @@ resource "oci_load_balancer_listener" "lb-listener1" {
 resource "oci_load_balancer_listener" "lb-listener2" {
   load_balancer_id         = "${oci_load_balancer.lb1.id}"
   name                     = "https"
-  default_backend_set_name = "${oci_load_balancer_backendset.lb-bes1.id}"
+  default_backend_set_name = "${oci_load_balancer_backendset.lb-bes1.name}"
   port                     = 443
   protocol                 = "HTTP"
 
@@ -312,7 +312,7 @@ resource "oci_load_balancer_listener" "lb-listener2" {
 
 resource "oci_load_balancer_backend" "lb-be1" {
   load_balancer_id = "${oci_load_balancer.lb1.id}"
-  backendset_name  = "${oci_load_balancer_backendset.lb-bes1.id}"
+  backendset_name  = "${oci_load_balancer_backendset.lb-bes1.name}"
   ip_address       = "${oci_core_instance.instance1.private_ip}"
   port             = 80
   backup           = false
@@ -323,7 +323,7 @@ resource "oci_load_balancer_backend" "lb-be1" {
 
 resource "oci_load_balancer_backend" "lb-be2" {
   load_balancer_id = "${oci_load_balancer.lb1.id}"
-  backendset_name  = "${oci_load_balancer_backendset.lb-bes1.id}"
+  backendset_name  = "${oci_load_balancer_backendset.lb-bes1.name}"
   ip_address       = "${oci_core_instance.instance2.private_ip}"
   port             = 80
   backup           = false

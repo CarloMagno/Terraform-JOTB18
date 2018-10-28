@@ -2,17 +2,18 @@
 ### Substitute the OCIDs, fingerprints and keys with the correct ones for your environment
 ### File for Linux and OS X Users in shell environment
 ### Authentication details
-export TF_VAR_tenancy_ocid=ocid1.tenancy.oc1..aaaaaaaa4neqrh3s2p6v2mf7qzcc2zsfmzmzj2qpvot7iu4ouzuym7pds2fq
-export TF_VAR_user_ocid=ocid1.user.oc1..aaaaaaaakjron7wolhhqlp667temyg4thtig7tw7pxxs3fby4zzg3emzyjxa
-export TF_VAR_fingerprint=20:4e:0d:b8:9a:8e:1e:1a:00:fb:14:d2:1a:88:8e:6d
+export TF_VAR_tenancy_ocid=ocid1.tenancy.oc1..aaaaaaaayot7avqzwm43oylqiyi2vabmk3dart7hbpuabcw66vnmwkbmid3q
+export TF_VAR_user_ocid=ocid1.user.oc1..aaaaaaaap5o6dfajw5retrk5r6xrxc65ndi555o6czjg7p77iffom335rgaq
 
-export TF_VAR_private_key_path=/home/oracle/.oci/oci_api_key.pem
+export TF_VAR_fingerprint=c5:a3:fb:61:6d:fc:c9:a6:b2:c7:c8:c9:ab:ce:68:76
+export TF_VAR_private_key_path=/home/oracle/tfdemo/Terraform-JOTB18/keys/userkey.pem
 
 ### Compartment
-export TF_VAR_compartment_ocid=ocid1.compartment.oc1..aaaaaaaad55zychwt2pu7tkis73644flpbhslnq3r3tfc327pc56xtn3yswq
+export TF_VAR_compartment_ocid=ocid1.compartment.oc1..aaaaaaaafu5ylzkeozssdbgeskdgispcbs5d2ayrd4eelz64jx4y76zjztjq
+
 ### Public/private keys used on the instances
 export TF_VAR_ssh_public_key=$(cat /home/oracle/.ssh/id_rsa.pub)
 export TF_VAR_ssh_private_key=$(cat /home/oracle/.ssh/id_rsa)
 
 ### Region
-export TF_VAR_region=us-ashburn-1
+export TF_VAR_region=eu-frankfurt-1
